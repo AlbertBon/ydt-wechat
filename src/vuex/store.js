@@ -13,17 +13,18 @@ const state = {
             title: '主页',
             content: 'main'
         }
-    ]
+    ],
+    customerToken:'',
 }
 
 const mutations = {
     addTab(state, item) {
         let tabs = state.tabsJson;
-        let reopen= false;
+        let reopen = false;
         tabs.forEach((tab, index) => {
-            if(item.path == tab.content){
-                state.tabsValue=tab.name;
-                reopen=true;
+            if (item.path == tab.content) {
+                state.tabsValue = tab.name;
+                reopen = true;
                 // console.log('重新打开tab'+tab.content);
                 return false;
             }
@@ -38,7 +39,7 @@ const mutations = {
             state.tabsValue = newTabName;
             // console.log('新开页面：'+item.title);
         }
-        
+
     },
     removeTab(state, targetName) {
         let tabs = state.tabsJson;
@@ -59,5 +60,5 @@ const mutations = {
 }
 
 export default new Vuex.Store({
-    state,mutations
+    state, mutations
 })

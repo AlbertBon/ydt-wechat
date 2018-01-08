@@ -7,12 +7,14 @@ import router from './router'
 Vue.config.productionTip = false
 
 import axios from 'axios'
-axios.defaults.headers.post['Content-Type']='application/json';
+// axios.defaults.headers.post['Content-Type']='application/json';
 Vue.prototype.$axios = axios;
 
 import store from '@/vuex/store'
 Vue.prototype.$store = store;
 
+import util from './assets/js/util'
+Vue.prototype.$util=util;
 
 /* eslint-disable no-new */
 new Vue({
