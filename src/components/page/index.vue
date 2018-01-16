@@ -7,25 +7,36 @@ export default {
   data() {
     return {
       code: "",
-      param:{
+      param: {
         code: ""
       }
     };
   },
   created() {
     this.code = this.$util.getQueryString("code");
-    this.param.code=this.code;
-    this.getOpenid(this.param);
+    this.param.code = this.code;
+
+    this.getToken(this.param);
+    this.$router.push({ path: "/userInfo" });
+    console.log(this.$store.state.customerToken);
+  },
+  mounted() {
+    // console.log(this.$store.state.customerToken);
+    this.getToken(this.param);
+    this.$router.push({ path: "/userInfo" ,replace:true});
+    console.log(this.$store.state.customerToken);
   },
   methods: {
-    getOpenid(param) {
+    getToken(param) {
       this.$axios
-        .post("http://localhost:8081/wx/customer/getToken.do",param)
+        .post("http://localhost:8081/wx/customer/getToken.do", param)
         .then(response => {
           console.log(response);
-          this.$store.customerToken=response.data;
+          this.$store.state.customerToken = response.data.data;
+          this.$store.state.PlatformType = "3";
+          console.log(this.$store.state.customerToken);
         });
-    }
+    },
   }
 };
 </script>

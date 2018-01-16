@@ -15,6 +15,8 @@ const state = {
         }
     ],
     customerToken:'',
+    PlatformType:'',
+    customerInfo:{},
 }
 
 const mutations = {

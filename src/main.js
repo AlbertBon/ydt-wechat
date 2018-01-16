@@ -16,6 +16,8 @@ Vue.prototype.$store = store;
 import util from './assets/js/util'
 Vue.prototype.$util=util;
 
+import $ from 'jquery'
+
 /* eslint-disable no-new */
 new Vue({
   router,
